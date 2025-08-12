@@ -133,13 +133,17 @@ const ChatViewer = () => {
     loadMessages(conversation.session_id);
   };
 
+  // Fonction modifiée pour afficher l'heure en UTC (comme dans Supabase)
   const formatTime = (timestamp) => {
-    return new Date(timestamp).toLocaleString('fr-FR', {
+    const date = new Date(timestamp);
+    // Afficher en UTC pour correspondre à Supabase
+    return date.toLocaleString('fr-FR', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
+      timeZone: 'UTC' // Force l'affichage en UTC
     });
   };
 
